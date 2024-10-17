@@ -40,7 +40,7 @@ def prepare_segment(data, fs = 256,train_win = 12, pred_win = 1, w_size = 1, w_s
     data_np = data.to_numpy()
     train_win = 12
     pred_win = 1
-    j = int(fs-(train_win+pred_win)+1)
+    j = int(data_np.shape[0]-(train_win+pred_win)+1)
     nwins = num_wins(len(data_np[:,0]),fs,w_size,w_stride)
     data_mat = torch.zeros((nwins,j,(train_win+pred_win),len(data_ch)))
     for k in range(len(data_ch)): # Iterating through channels

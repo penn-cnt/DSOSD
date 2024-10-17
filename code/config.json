@@ -1,8 +1,8 @@
-{"paths": {"META": "/mnt/leif/littlab/users/wojemann/stim-seizures/", 
+{"paths": {"META": "/mnt/leif/littlab/users/wojemann/NDD/", 
 "RAW_DATA": "/mnt/leif/littlab/users/wojemann/stim-seizures/RAW_DATA", 
-"PROCESSED_DATA": "/mnt/leif/littlab/users/wojemann/stim-seizures/PROCESSED_DATA",
-"METADATA": "/mnt/leif/littlab/users/wojemann/stim-seizures/METADATA",
-"FIGURES": "/mnt/leif/littlab/users/wojemann/stim-seizures/figures",
+"PROCESSED_DATA": "/mnt/leif/littlab/users/wojemann/NDD/PROCESSED_DATA",
+"METADATA": "/mnt/leif/littlab/users/wojemann/NDD/METADATA",
+"FIGURES": "/mnt/leif/littlab/users/wojemann/NDD/figures",
 "iEEG_USR": "wojemann", 
 "iEEG_PWD": "/mnt/leif/littlab/users/wojemann/woj_ieeglogin.bin"}, 
 "patients": [

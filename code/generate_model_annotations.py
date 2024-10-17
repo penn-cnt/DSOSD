@@ -18,12 +18,10 @@ import seaborn as sns
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 
 # Imports for analysis
-from seizure_detection_pipeline import prepare_segment, TRAIN_WIN, PRED_WIN
+from code.old.seizure_detection_pipeline import prepare_segment, TRAIN_WIN, PRED_WIN
 
 # OS imports
-import os
 from os.path import join as ospj
-from os.path import exists as ospe
 from utils import *
 import sys
 sys.path.append('/users/wojemann/iEEG_processing')
@@ -101,26 +99,19 @@ def main():
                     predicted_channels['ueo_time_consensus'].append(consensus_time)
                     predicted_channels['to_annotate'].append(sz_row.to_annotate)
                     predicted_channels['threshold'].append(final_thresh)
-
-                    # get late szing mask
-                    # late = np.sum(sz_prob[:,-onset_index:] > final_thresh,axis=1) > (onset_index/4)
-                    # sz_prob_reject = sz_prob[~late,:]
-                    sz_prob_reject = sz_prob
-                    # prob_chs_reject = prob_chs[~late]
-                    prob_chs_reject = prob_chs
-                    # sz_clf_final = sz_prob > final_thresh
+                    sz_prob = sz_prob
 
                     # Here this could be first seizing index, or it could be the time of the clinically defined UEO from the annotations
                     # first_seizing_index = np.argmax(sz_clf_final.any(axis=0))
 
-                    mdl_ueo_idx = np.all(sz_prob_reject[:,onset_index:onset_index+5] > final_thresh,axis=1)
-                    mdl_ueo_ch_bp = prob_chs_reject[mdl_ueo_idx]
+                    mdl_ueo_idx = np.all(sz_prob[:,onset_index:onset_index+5] > final_thresh,axis=1)
+                    mdl_ueo_ch_bp = prob_chs[mdl_ueo_idx]
                     mdl_ueo_ch_strict = np.array([s.split("-")[0] for s in mdl_ueo_ch_bp]).flatten()
                     mdl_ueo_ch_loose = np.unique(np.array([s.split("-") for s in mdl_ueo_ch_bp]).flatten())
                     predicted_channels['ueo_chs_strict'].append(mdl_ueo_ch_strict)
                     predicted_channels['ueo_chs_loose'].append(mdl_ueo_ch_loose)
-                    mdl_sec_idx = np.all(sz_prob_reject[:,spread_index:spread_index+5] > final_thresh,axis=1)
-                    mdl_sec_ch_bp = prob_chs_reject[mdl_sec_idx]
+                    mdl_sec_idx = np.all(sz_prob[:,spread_index:spread_index+5] > final_thresh,axis=1)
+                    mdl_sec_ch_bp = prob_chs[mdl_sec_idx]
                     mdl_sec_ch_strict = np.array([s.split("-")[0] for s in mdl_sec_ch_bp]).flatten()
                     mdl_sec_ch_loose = np.unique(np.array([s.split("-") for s in mdl_sec_ch_bp]).flatten())
                     predicted_channels['sec_chs_strict'].append(mdl_sec_ch_strict)

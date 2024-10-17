@@ -19,7 +19,7 @@ import seaborn as sns
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 
 # Imports for analysis
-from seizure_detection_pipeline import prepare_segment, TRAIN_WIN, PRED_WIN
+from code.old.seizure_detection_pipeline import prepare_segment, TRAIN_WIN, PRED_WIN
 
 # OS imports
 import os
