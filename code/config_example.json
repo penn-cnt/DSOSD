@@ -1,0 +1,8 @@
+{"paths": {"META": "/absolute/path/to/this/folder", 
+"RAW_DATA": "/absolute/path/to/seizure/storage", 
+"PROCESSED_DATA": "/absolute/path/to/processed/data",
+"METADATA": "/absolute/path/to/metadata",
+"FIGURES": "/absolute/path/to/desired/figure/storage",
+"iEEG_USR": "iEEG.org account username", 
+"iEEG_PWD": "/absolute/path/to/ieeg.org/account/password/binary/file"}
+}
